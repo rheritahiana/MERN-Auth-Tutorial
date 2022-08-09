@@ -13,7 +13,19 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  roles: {
+    type: Array,
+    required: false
+  },
+  displayName: {
+    type: String,
+    required: false
+  },
+  avatar: {
+    type: String,
+    required: false
+  },
 })
 
 // static signup method
