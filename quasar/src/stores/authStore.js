@@ -7,6 +7,7 @@ export const useAuthStore = defineStore("auth", {
     isAdmin: false,
     isAuthenticated: false,
     user: null,
+    returnUrl: null
   }),
   getters: {},
   actions: {
@@ -24,14 +25,14 @@ export const useAuthStore = defineStore("auth", {
       }
       if (response.ok) {
         // save the user to local storage
-        console.log("isAuthenticated");
+        //console.log("isAuthenticated");
         this.user = json;
         this.isAuthenticated = true;
 
         if (json.roles.includes("admin")) {
           this.isAdmin = true;
         }
-
+        this.router.push(this.returnUrl || '/');
         // update loading state
       }
     },
@@ -68,9 +69,15 @@ export const useAuthStore = defineStore("auth", {
       this.isAuthenticated = false;
       this.isAdmin = false;
       this.isEditor = false;
+      this.router.push('/login');
     },
   },
   persist: {
     enabled: true,
+    strategies: [
+      {
+        storage: localStorage,
+      },
+    ],
   },
 });

@@ -3,13 +3,15 @@
     <q-layout view="lHh Lpr lFf" class="WAL__layout shadow-3" container>
       <q-header elevated>
         <q-toolbar class="bg-grey-3 text-black">
-          <q-btn flat round icon="mdi-home" to="/" />
+          <q-btn flat round icon="mdi-home" to="/" :class="{ active: $route.path === '/' }" />
+<q-space />
 
-          <q-space />
           <q-btn-group flat rounded>
             <q-btn
+
               v-if="isAdmin"
               to="/users"
+              :class="{ active: $route.path === '/users' }"
               no-caps
               label="utilisateurs"
               icon="mdi-account-group"
@@ -50,7 +52,7 @@
       </q-page-container>
 
       <q-footer>
-        <q-toolbar class="bg-grey-3 text-black row"> workouts </q-toolbar>
+        <q-toolbar class="bg-grey-3 text-black row"> Tech media </q-toolbar>
       </q-footer>
     </q-layout>
   </div>
@@ -120,4 +122,7 @@ function logout() {
   .WAL
     &__drawer-open
       display: none
+.active
+  background-color: #009688
+  color:#ffffff
 </style>

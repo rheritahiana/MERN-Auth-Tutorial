@@ -18,7 +18,7 @@ export const useUsersStore = defineStore("users", {
 
         const json = await response.json();
         if (response.ok) {
-          console.log("Users : ", json);
+          //console.log("Users : ", json);
           this.users = json;
         }
       } else {
@@ -74,5 +74,10 @@ export const useUsersStore = defineStore("users", {
   },
   persist: {
     enabled: true,
+    strategies: [
+      {
+        storage: localStorage,
+      },
+    ],
   },
 });

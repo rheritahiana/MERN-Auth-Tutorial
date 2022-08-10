@@ -15,7 +15,7 @@ export const useWorkoutStore = defineStore("workout", {
         });
         const json = await response.json();
         if (response.ok) {
-          console.log("workouts : ", json);
+          //console.log("workouts : ", json);
           this.workouts = json;
         }
       } else {
@@ -71,5 +71,10 @@ export const useWorkoutStore = defineStore("workout", {
   },
   persist: {
     enabled: true,
+    strategies: [
+      {
+        storage: localStorage,
+      },
+    ],
   },
 });
